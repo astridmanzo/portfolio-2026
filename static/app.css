@@ -1,0 +1,173 @@
+:root {
+  --bg: #0b1220;
+  --panel: #111a2b;
+  --panel-soft: #18243a;
+  --text: #e6edf8;
+  --muted: #9caecc;
+  --accent: #4f8cff;
+  --accent-2: #3ad6a0;
+  --danger: #ff6b6b;
+  --border: #24344f;
+  --radius: 14px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  color: var(--text);
+  background: radial-gradient(circle at top right, #192a49 0%, var(--bg) 45%);
+  min-height: 100vh;
+  padding-bottom: 86px;
+}
+main {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 14px;
+}
+.view { display: grid; gap: 14px; }
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 6px 0 14px;
+  gap: 10px;
+}
+.eyebrow {
+  margin: 0;
+  color: var(--muted);
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+h1 { margin: 0; font-size: 1.25rem; }
+h2 { margin: 8px 0 6px; font-size: 1rem; color: #d3e2ff; }
+h3 { margin: 0 0 4px; }
+p { color: var(--muted); margin: 6px 0; }
+
+.logout, .btn, button {
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, var(--accent), #2d6be6);
+  color: white;
+  border-radius: 12px;
+  padding: 10px 14px;
+  text-decoration: none;
+  font-weight: 600;
+}
+button:hover, .btn:hover, .logout:hover { filter: brightness(1.07); }
+
+ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+li {
+  background: linear-gradient(180deg, var(--panel-soft), var(--panel));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+}
+li a { color: #dce8ff; text-decoration: none; font-weight: 600; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.card {
+  background: linear-gradient(160deg, #1e2c47, #111a2b);
+  border: 1px solid #2b3f62;
+  border-radius: var(--radius);
+  color: var(--text);
+  text-decoration: none;
+  padding: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
+}
+.card p { font-size: 1.2rem; font-weight: 700; color: #fff; margin: 0; }
+
+form, .printable {
+  background: linear-gradient(180deg, var(--panel-soft), var(--panel));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+}
+.stack { display: grid; gap: 10px; }
+
+input, textarea, select {
+  width: 100%;
+  font-size: 16px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #334a72;
+  background: #0d1627;
+  color: #eaf1ff;
+}
+input::placeholder, textarea::placeholder { color: #7f95ba; }
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid rgba(79,140,255,.45);
+  border-color: var(--accent);
+}
+
+.flag {
+  background: rgba(255, 107, 107, .18);
+  color: #ffd8d8;
+  border: 1px solid rgba(255, 107, 107, .45);
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: 600;
+}
+
+.photos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 8px;
+}
+.thumb {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #2b3f62;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background: rgba(12, 20, 34, .96);
+  border-top: 1px solid #283b5b;
+  backdrop-filter: blur(8px);
+}
+.bottom-nav a {
+  text-decoration: none;
+  color: #b8cae8;
+  text-align: center;
+  padding: 9px 4px 10px;
+  display: grid;
+  gap: 2px;
+  justify-items: center;
+  font-size: 1.1rem;
+}
+.bottom-nav a small {
+  font-size: .7rem;
+  color: #8ea5ca;
+}
+.bottom-nav a:hover span { transform: translateY(-1px); }
+
+@media (min-width: 760px) {
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  body { padding-bottom: 24px; }
+  .bottom-nav {
+    position: sticky;
+    top: 0;
+    margin: 0 auto 12px;
+    max-width: 980px;
+    border: 1px solid #283b5b;
+    border-radius: 14px;
+  }
+}
+
+@media print {
+  .bottom-nav, .topbar, form button, .btn, .logout { display: none !important; }
+  body { background: #fff; color: #000; padding: 0; }
+  form, .printable, li { background: #fff; border: 1px solid #bbb; box-shadow: none; }
+}
