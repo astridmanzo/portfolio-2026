@@ -96,15 +96,8 @@ def require_auth(environ):
 
 
 def html_page(title, body, user=None):
-    nav = '' if not user else '''<nav class="bottom-nav">
-        <a href="/dashboard"><span>🏠</span><small>Dashboard</small></a>
-        <a href="/leads"><span>🎯</span><small>Leads</small></a>
-        <a href="/jobs"><span>🛠️</span><small>Jobs</small></a>
-        <a href="/customers"><span>👥</span><small>Customers</small></a>
-        <a href="/billing"><span>💵</span><small>Billing</small></a>
-    </nav>'''
-    top = '' if not user else f'''<header class="topbar"><div><p class="eyebrow">The Dent Trooper</p><h1>{title}</h1></div><a class="logout" href="/logout">Log out</a></header>'''
-    return f'''<!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"/><title>{title}</title><link rel="stylesheet" href="/static/app.css"></head><body><main>{top}<section class="view">{body}</section></main>{nav}</body></html>'''.encode()
+    nav = '' if not user else '''<nav class="bottom-nav"><a href="/dashboard">Dashboard</a><a href="/leads">Leads</a><a href="/jobs">Jobs</a><a href="/customers">Customers</a><a href="/billing">Billing</a></nav>'''
+    return f'''<!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"/><title>{title}</title><link rel="stylesheet" href="/static/app.css"></head><body><main>{body}</main>{nav}</body></html>'''.encode()
 
 
 def redirect(start_response, location, cookie=None):
